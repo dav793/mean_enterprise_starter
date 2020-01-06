@@ -1,0 +1,47 @@
+version: '3.0' # specify docker-compose version
+
+# Define the services (i.e. containers) to be run
+services:
+  mean-enterprise-starter-client:
+    build:
+      context: .                          # directory of the Dockerfile
+      dockerfile: Dockerfile.development.client
+    ports:
+      - "4200:4200"
+    expose:
+      - "8080"
+    depends_on:
+      - mean-enterprise-starter-server             # link this service to the server service
+    volumes:
+      - "${ROOT_PATH}/mean-enterprise-starter-client:/usr/client"
+      - "/usr/client/node_modules"
+      - "${ROOT_PATH}/out/log/client/npm:/root/.npm/_logs"
+
+  mean-enterprise-starter-server:
+    build:
+      context: .                          # directory of the Dockerfile
+      dockerfile: Dockerfile.development.server
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mean-enterprise-starter-database             # link this service to the database service
+    environment:
+      DB_HOST: mean-enterprise-starter-database    # name of the db container
+    volumes:
+      - "${ROOT_PATH}/mean-enterprise-starter-server:/usr/server"
+      - "/usr/server/node_modules"
+      - "${ROOT_PATH}/out/log/server:/usr/server/log"
+      - "${ROOT_PATH}/out/log/server/npm:/root/.npm/_logs"
+
+  mean-enterprise-starter-database:
+    image: mongo:3.4.18-jessie            # image to build container from
+    ports:
+      - "27017:27017"
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - "${ROOT_PATH}/mean-enterprise-starter-db:/data/db"
+      - "${ROOT_PATH}/out/log/mongodb:/var/log/mongodb/"
+      - "${ROOT_PATH}/out/db_dump:/usr/db_dump"

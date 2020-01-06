@@ -1,0 +1,8 @@
+[submodule "mean-enterprise-starter-client"]
+	path = mean-enterprise-starter-client
+	url = https://github.com/dav793/mean-enterprise-starter-client.git
+	branch = master
+[submodule "mean-enterprise-starter-server"]
+	path = mean-enterprise-starter-server
+	url = https://github.com/dav793/mean-enterprise-starter-server.git
+	branch = master

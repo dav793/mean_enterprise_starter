@@ -1,0 +1,25 @@
+
+# docker env
+.env
+
+# docker-generated dirs
+out
+mean-enterprise-starter-db
+
+# OS X
+.DS_Store*
+Icon?
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+.directory
+*~
+
+# IDE
+.idea
+.idea/workspace.xml

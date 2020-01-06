@@ -1,0 +1,13 @@
+FROM node:8.15.0-jessie
+
+RUN mkdir -p /usr/server
+WORKDIR /usr/server
+COPY et-crm-server /usr/server
+
+RUN npm cache verify
+RUN npm install
+
+EXPOSE 8080
+EXPOSE 27017
+
+CMD ["npm", "run", "start:docker"]
