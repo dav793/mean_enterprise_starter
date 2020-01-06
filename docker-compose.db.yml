@@ -11,6 +11,6 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
-      - "${ROOT_PATH}/mean-enterprise-starter-db:/data/db"
+      - "${ROOT_PATH}/mean_enterprise_starter_db:/data/db"
       - "${ROOT_PATH}/out/log/mongodb:/var/log/mongodb/"
       - "${ROOT_PATH}/out/db_dump:/usr/db_dump"

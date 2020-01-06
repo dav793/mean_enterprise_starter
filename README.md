@@ -4,17 +4,17 @@
 
 * clone this repo + client/server submodules
 ```bash
-    git clone --recursive https://github.com/dav793/mean-enterprise-starter.git
+    git clone --recursive https://github.com/dav793/mean_enterprise_starter.git
 ```
 
 * create server config file from template
 ```bash
-    cp mean-enterprise-starter-server/config/config.template.json mean-enterprise-starter-server/config/config.json
+    cp mean_enterprise_starter_server/config/config.template.json mean_enterprise_starter_server/config/config.json
 ```
 
-* setup server config file ```mean-enterprise-starter-server/config/config.json```
+* setup server config file ```mean_enterprise_starter_server/config/config.json```
 
-* setup client environment file ```mean-enterprise-starter-client/src/environments/environment.ts```
+* setup client environment file ```mean_enterprise_starter_client/src/environments/environment.ts```
 
 * create docker env file
 ```bash
@@ -23,7 +23,7 @@
 
 * setup docker env file
 ```bash
-    ROOT_PATH=/Users/david/Workspace/mean-enterprise-starter
+    ROOT_PATH=/Users/david/Workspace/mean_enterprise_starter
 ```
 
 * run DB service only 
@@ -33,7 +33,7 @@
 
 * set up initial database state (if not already set)
 ```bash
-    mean-enterprise-starter-server/scripts/setupDb.sh -h localhost -d mean-enterprise-starter -u root -p example
+    mean_enterprise_starter_server/scripts/setupDb.sh -h localhost -d mean-enterprise-starter -u root -p example
 ```
 
 * stop DB service
@@ -122,7 +122,7 @@
 
 * clear database
 ```bash
-    mean-enterprise-starter-server/scripts/clearDb.sh -h localhost -d et-crm -u root -p example
+    mean_enterprise_starter_server/scripts/clearDb.sh -h localhost -d et-crm -u root -p example
 ```
 
 * restart docker

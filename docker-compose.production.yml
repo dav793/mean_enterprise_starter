@@ -13,9 +13,9 @@ services:
     environment:
       DB_HOST: et-crm-database    # name of the db container
     volumes:
-      - "${ROOT_PATH}/mean-enterprise-starter-server:/usr/server"
+      - "${ROOT_PATH}/mean_enterprise_starter_server:/usr/server"
       - "/usr/server/node_modules"
-      - "${ROOT_PATH}/mean-enterprise-starter-client:/usr/client"
+      - "${ROOT_PATH}/mean_enterprise_starter_client:/usr/client"
       - "/usr/client/node_modules"
       - "${ROOT_PATH}/out/log/server:/usr/server/log"
       - "${ROOT_PATH}/out/log/server/npm:/root/.npm/_logs"
@@ -29,6 +29,6 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
-      - "${ROOT_PATH}/mean-enterprise-starter-db:/data/db"
+      - "${ROOT_PATH}/mean_enterprise_starter_db:/data/db"
       - "${ROOT_PATH}/out/log/mongodb:/var/log/mongodb/"
       - "${ROOT_PATH}/out/db_dump:/usr/db_dump"

@@ -4,7 +4,7 @@
 
 # docker-generated dirs
 out
-mean-enterprise-starter-db
+mean_enterprise_starter_db
 
 # OS X
 .DS_Store*
