@@ -3,67 +3,45 @@
 ## Build instructions
 
 * clone this repo + client/server submodules
-```bash
+    ```bash
     git clone --recursive https://github.com/dav793/mean_enterprise_starter.git
-```
+    ```
+ 
+* [run DB service only](#run-db-service-only) - **do this BEFORE running setup script**
 
-* create server config file from template
-```bash
-    cp mean_enterprise_starter_server/config/config.template.json mean_enterprise_starter_server/config/config.json
-```
-
-* setup server config file ```mean_enterprise_starter_server/config/config.json```
-
-* setup client environment file ```mean_enterprise_starter_client/src/environments/environment.ts```
-
-* create docker env file
-```bash
-    touch .env
-```
-
-* setup docker env file
-```bash
-    ROOT_PATH=/Users/david/Workspace/mean_enterprise_starter
-```
-
-* run DB service only 
-```bash
-    docker-compose -f docker-compose.db.yml up
-```
-
-* set up initial database state (if not already set)
-```bash
-    mean_enterprise_starter_server/scripts/setupDb.sh -h localhost -d mean-enterprise-starter -u root -p example
-```
+* run initial setup script - **do this only once**
+    ```bash
+    scripts/setup.sh
+    ```
 
 * stop DB service
 
 * [run](#run)
 
-## <a name="run"></a> Run
+## Run
 
 ### production:
 ```bash
-    docker-compose -f docker-compose.production.yml up              // run
-     
-    docker-compose -f docker-compose.production.yml up --build      // run + force re-build
-    
-    docker-compose -f docker-compose.production.yml stop            // stop
+docker-compose -f docker-compose.production.yml up              // run
+ 
+docker-compose -f docker-compose.production.yml up --build      // run + force re-build
+
+docker-compose -f docker-compose.production.yml stop            // stop
 ```
 
 ### development:
 ```bash
-    docker-compose -f docker-compose.development.yml up             // run
-    
-    docker-compose -f docker-compose.development.yml up --build     // run + force re-build
-    
-    docker-compose -f docker-compose.development.yml stop           // stop
+docker-compose -f docker-compose.development.yml up             // run
+
+docker-compose -f docker-compose.development.yml up --build     // run + force re-build
+
+docker-compose -f docker-compose.development.yml stop           // stop
 ```
 
 ## Run DB service only
 
 ```bash
-    docker-compose -f docker-compose.db.yml up
+docker-compose -f docker-compose.db.yml up
 ```
 
 ## DB Users
@@ -82,13 +60,13 @@
 * Dump
 
 ```bash
-    mongodump --host 127.0.0.1 --db mean-enterprise-starter -u root -p example --out ${PATH_TO_DUMP}
+mongodump --host 127.0.0.1 --db mean-enterprise-starter -u root -p example --out ${PATH_TO_DUMP}
 ```
 
 * Restore
 
 ```bash
-    mongorestore --host 127.0.0.1 --db mean-enterprise-starter -u root -p example ${PATH_TO_DUMP}/mean-enterprise-starter
+mongorestore --host 127.0.0.1 --db mean-enterprise-starter -u root -p example ${PATH_TO_DUMP}/mean-enterprise-starter
 ```
 
 ## Utilities
@@ -96,42 +74,42 @@
 * open shell on server container
 
 ```bash
-    docker exec -it mean-enterprise-starter_mean-enterprise-starter-server_1 bash
+docker exec -it mean-enterprise-starter_mean-enterprise-starter-server_1 bash
 ```
 
 * create a container from an image and replace container startup routine with bash
 
 ```bash
-    docker run -it --entrypoint /bin/bash mean-enterprise-starter_mean-enterprise-starter-server -s
+docker run -it --entrypoint /bin/bash mean-enterprise-starter_mean-enterprise-starter-server -s
 ```
 
 * redirect stdout to log file
 ```bash
-    ./redirectStdoutToLog.sh
+./redirectStdoutToLog.sh
 ```
 
 * stop redirecting stdout to log file
 ```bash
-    exit
+exit
 ```
 
 * prepend timestamp to stdout
 ```bash
-    <command> | ts '[%Y-%m-%d %H:%M:%S]'
+<command> | ts '[%Y-%m-%d %H:%M:%S]'
 ```
 
 * clear database
 ```bash
-    mean_enterprise_starter_server/scripts/clearDb.sh -h localhost -d et-crm -u root -p example
+mean_enterprise_starter_server/scripts/clearDb.sh -h localhost -d et-crm -u root -p example
 ```
 
 * restart docker
 ```bash
-    service docker restart
+service docker restart
 ```
 
 *
 ```bash
-    sudo usermod -a -G docker $USER
+sudo usermod -a -G docker $USER
 ```
 
